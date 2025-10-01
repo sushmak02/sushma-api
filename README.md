@@ -40,7 +40,7 @@ Registered this WP-CLI command to refresh the cached data:
 ```
 wp sushma-api force-refresh
 ```
-This bypasses the 1-hour cache limit and fetches fresh data immediately.
+This command fetches fresh data immediately.
 
 
 
