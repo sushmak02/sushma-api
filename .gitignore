@@ -1,0 +1,6 @@
+/vendor/
+/node_modules/
+/build/*.asset.php
+composer.lock
+package-lock.json
+.DS_Store
