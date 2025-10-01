@@ -25,7 +25,6 @@ A WordPress plugin to fetch data from remote API and display it through Gutenber
 2. Add a new block and search for "Sushma API Data"
 3. Insert the block
 4. Use the block settings from sidebar to show/hide column
-  - Show/Hide any table columns
 
 
 ### Admin Page
