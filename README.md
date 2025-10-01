@@ -8,7 +8,7 @@ A WordPress plugin to fetch data from remote API and display it through Gutenber
 - **Gutenberg Block** - Display data in a table with show/hide options
 - **Admin Page** - View data in a table with refresh button
 - **WP-CLI Command** - Registered "wp sushma-api force-refresh" command to force refresh data
-- **Transient Support** - 1-hour cache support using transient with manual refresh option
+- **Transient Support** - Added cache support using transient
 
 
 ## Installation steps
