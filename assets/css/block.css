@@ -1,0 +1,202 @@
+/**
+ * Sushma API Block Styles
+ */
+
+/* Block container */
+.sushma-api-block {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Table wrapper */
+.sushma-api-block .sushma-api-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	margin: 0;
+	padding: 0;
+}
+
+/* Table base */
+.sushma-api-block .sushma-api-table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background: #fff;
+	border: 1px solid #ddd;
+	margin: 0;
+	table-layout: auto;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+/* Table header */
+.sushma-api-block .sushma-api-table thead {
+	background: #f9f9f9;
+	border-bottom: 2px solid #ddd;
+}
+
+.sushma-api-block .sushma-api-table thead th {
+	padding: 12px 16px;
+	text-align: left;
+	font-weight: 600;
+	font-size: 13px;
+	color: #333;
+	border-bottom: 2px solid #ddd;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	background: #f9f9f9;
+}
+/* Table Body */
+.sushma-api-block .sushma-api-table tbody tr {
+	border-bottom: 1px solid #e5e5e5;
+	transition: background-color 0.15s ease;
+}
+
+.sushma-api-block .sushma-api-table tbody tr:hover {
+	background-color: #f5f5f5;
+}
+.sushma-api-block .sushma-api-table tbody tr:last-child {
+	border-bottom: none;
+}
+.sushma-api-block .sushma-api-table tbody td {
+	padding: 12px 16px;
+	color: #555;
+	vertical-align: middle;
+	border-bottom: 1px solid #e5e5e5;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* Column Specific Styles */
+.sushma-api-block .sushma-api-table-id {
+	width: 8%;
+	min-width: 60px;
+	font-weight: 600;
+	color: #2271b1;
+}
+.sushma-api-block .sushma-api-table-fname,
+.sushma-api-block .sushma-api-table-lname {
+	width: 15%;
+	min-width: 100px;
+}
+.sushma-api-block .sushma-api-table-email {
+	width: 35%;
+	min-width: 180px;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: 13px;
+	color: #666;
+}
+
+.sushma-api-block .sushma-api-table-date {
+	width: 15%;
+	min-width: 100px;
+	color: #666;
+	white-space: nowrap;
+}
+
+/* Striped Rows */
+.sushma-api-block .sushma-api-table.striped tbody tr:nth-child(odd) {
+	background-color: #fafafa;
+}
+.sushma-api-block .sushma-api-table.striped tbody tr:nth-child(even) {
+	background-color: #fff;
+}
+
+.sushma-api-block .sushma-api-table.striped tbody tr:hover {
+	background-color: #f0f0f0;
+}
+
+@media screen and (max-width: 782px) {
+	.sushma-api-block .sushma-api-table {
+		font-size: 13px;
+	}
+
+	.sushma-api-block .sushma-api-table thead th,
+	.sushma-api-block .sushma-api-table tbody td {
+		padding: 10px 12px;
+	}
+	.sushma-api-block .sushma-api-table thead th {
+		font-size: 12px;
+	}
+	.sushma-api-block .sushma-api-table-email {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.sushma-api-block .sushma-api-table {
+		font-size: 12px;
+		display: block;
+	}
+
+	.sushma-api-block .sushma-api-table thead,
+	.sushma-api-block .sushma-api-table tbody,
+	.sushma-api-block .sushma-api-table tr,
+	.sushma-api-block .sushma-api-table th,
+	.sushma-api-block .sushma-api-table td {
+		display: block;
+		width: 100%;
+	}
+
+	.sushma-api-block .sushma-api-table thead {
+		display: none;
+	}
+	.sushma-api-block .sushma-api-table tbody tr {
+		margin-bottom: 15px;
+		border: 1px solid #ddd;
+		border-radius: 4px;
+		padding: 10px;
+	}
+	.sushma-api-block .sushma-api-table tbody td {
+		padding: 8px 10px;
+		border: none;
+		position: relative;
+		padding-left: 45%;
+		text-align: right;
+	}
+
+	.sushma-api-block .sushma-api-table tbody td:before {
+		content: attr(data-label);
+		position: absolute;
+		left: 10px;
+		width: 40%;
+		padding-right: 10px;
+		text-align: left;
+		font-weight: 600;
+		color: #333;
+	}
+	.sushma-api-block .sushma-api-table-email {
+		font-size: 11px;
+		word-break: break-all;
+	}
+}
+
+/* Editor Specific Styles */
+.wp-block-sushma-api-data {
+	margin: 20px 0;
+}
+.wp-block-sushma-api-data .sushma-api-block {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	overflow: hidden;
+}
+
+
+.sushma-api-block .wp-block-loading {
+	text-align: center;
+	padding: 40px;
+	color: #666;
+}
+
+.sushma-api-block .wp-block-loading p {
+	margin-top: 10px;
+	font-size: 14px;
+}
+.sushma-api-block .components-notice {
+	margin: 20px;
+}

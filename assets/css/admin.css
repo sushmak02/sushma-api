@@ -1,0 +1,334 @@
+/**
+ * Sushma API admin styles.
+ */
+
+/* Wrapper */
+.sushma-api-wrap {
+	margin: 0 0 0 -20px;
+	padding: 0;
+	background: #f0f0f1;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+
+/* Header section */
+.sushma-api-header {
+	background: #f0f0f1;
+	border-top: 3px solid #e27730;
+	padding: 14px 40px;
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	position: relative;
+	margin: 0;
+}
+.sushma-api-logo {
+	display: flex;
+	align-items: center;
+	background: rgba(203, 72, 27, 0.15);
+	padding: 8px;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	backdrop-filter: blur(10px);
+}
+.sushma-api-logo svg {
+	display: block;
+	filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+h1.sushma-api-header-title {
+	margin: 0;
+	font-weight: 300;
+	font-size: 20px;
+	color: #000;
+	line-height: 1.4;
+	text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+	letter-spacing: -0.3px;
+	font-family: cursive;
+}
+
+
+/* Page title style */
+.sushma-api-page-title {
+	background: #ffffff;
+	padding: 12px 40px;
+	margin: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border-bottom: 1px solid #dcdcde;
+	box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+.sushma-api-page-heading {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 400;
+	color: #000;
+	line-height: 1.3;
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.sushma-api-page-heading::before {
+	content: '';
+	width: 4px;
+	height: 32px;
+	background: #e27730;
+	border-radius: 2px;
+}
+
+/* Button styling */
+.sushma-api-button {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.2s;
+	text-decoration: none;
+	line-height: 1.5;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+
+.sushma-api-button-primary {
+	background: #e27730;
+	color: #fff;
+	border: 1px solid #e27730;
+	outline: none;
+}
+.sushma-api-button-primary:hover {
+	color: #fff;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+	transform: translateY(-1px);
+}
+
+.sushma-api-button-primary:active {
+	background: linear-gradient(135deg, #e27730 0%, #cb6b2c 100%);
+	transform: translateY(0);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.sushma-api-button-primary:disabled {
+	background: #a7aaad;
+	border-color: #a7aaad;
+	cursor: not-allowed;
+	opacity: 0.6;
+	box-shadow: none;
+	transform: none;
+}
+
+.sushma-api-button .dashicons {
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+}
+
+.sushma-api-button.loading .dashicons {
+	animation: sushma-api-spin 1s linear infinite;
+}
+
+/* Content area */
+.sushma-api-content-wrap {
+	padding: 32px 40px 40px;
+	max-width: 100%;
+	background: #f0f0f1;
+}
+.sushma-api-card {
+	background: #ffffff;
+	border: 1px solid #dcdcde;
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgb(0 0 0 / 4%), 0 1px 2px rgb(0 0 0 / 2%);
+	overflow: hidden;
+	transition: box-shadow 0.2s ease;
+}
+
+.sushma-api-card:hover {
+	box-shadow: 0 4px 8px rgb(0 0 0 / 6%), 0 2px 4px rgb(0 0 0 / 4%);
+}
+
+.sushma-api-card-body {
+	padding: 0;
+}
+
+/* Table wrapper */
+.sushma-api-table-wrapper {
+	overflow-x: auto;
+}
+
+/* Table - trying to match WP admin style */
+.sushma-api-table {
+	margin: 0 !important;
+	border: 1px solid #c3c4c7;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+	font-size: 13px;
+}
+
+.sushma-api-table thead tr,
+.sushma-api-table tfoot tr {
+	background: #fff;
+}
+
+.sushma-api-table thead th {
+	font-weight: 600;
+	font-size: 14px;
+	text-align: left;
+	padding: 8px 10px !important;
+	color: #2c3338;
+	border-bottom: 1px solid #c3c4c7 !important;
+	background: #fff;
+	line-height: 1.4;
+	vertical-align: middle;
+}
+.sushma-api-table td {
+	padding: 8px 10px !important;
+	border-top: 1px solid #c3c4c7 !important;
+	border-bottom: none !important;
+	font-size: 14px;
+	color: #2c3338;
+	vertical-align: middle;
+	line-height: 1.5;
+}
+.sushma-api-table tbody tr {
+	background: #ffffff;
+}
+.sushma-api-table tbody tr:nth-child(odd) {
+	background: #f6f7f7;
+}
+
+
+
+.sushma-api-table tbody tr:hover {
+	background: #f0f6fc !important;
+}
+
+.sushma-api-table tbody tr:last-child td {
+	border-bottom: 1px solid #c3c4c7 !important;
+}
+
+/* Column widths */
+.sushma-api-table-id {
+	width: 60px;
+	font-weight: 600;
+	color: #2271b1;
+	padding-left: 10px !important;
+}
+
+.sushma-api-table-fname,
+.sushma-api-table-lname,
+.sushma-api-table-date {
+	width: 15%;
+	min-width: 100px;
+}
+.sushma-api-table-email {
+	width: 30%;
+	min-width: 180px;
+	font-size: 13px;
+}
+
+/* Notices */
+.sushma-api-card-body .notice {
+	margin: 20px;
+	border-left-width: 4px;
+}
+/* Loading state */
+.sushma-api-loading {
+	opacity: 0.6;
+	pointer-events: none;
+	position: relative;
+}
+
+.sushma-api-loading::after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(255, 255, 255, 0.5);
+	z-index: 10;
+}
+
+
+/* Animation */
+@keyframes sushma-api-spin {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+
+/* Responsive styling */
+@media screen and (max-width: 960px) {
+	.sushma-api-header {
+		padding: 15px 20px;
+	}
+	.sushma-api-page-title {
+		padding: 12px 20px;
+	}
+	.sushma-api-content-wrap {
+		padding: 20px;
+	}
+}
+
+
+
+@media screen and (max-width: 782px) {
+	.sushma-api-header {
+		padding: 12px 15px;
+	}
+	.sushma-api-page-title {
+		padding: 15px;
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 15px;
+	}
+	h1.sushma-api-header-title {
+		font-size: 18px;
+	}
+	.sushma-api-page-heading {
+		font-size: 16px;
+	}
+
+	.sushma-api-page-heading::before {
+		height: 26px;
+	}
+
+	.sushma-api-content-wrap {
+		padding: 15px;
+	}
+
+	.sushma-api-button {
+		width: 100%;
+		justify-content: center;
+		padding: 10px 16px;
+	}
+	.sushma-api-table th,
+	.sushma-api-table td {
+		padding: 10px 8px !important;
+		font-size: 13px;
+	}
+	.sushma-api-table thead th {
+		font-size: 12px;
+	}
+}
+
+
+@media screen and (max-width: 600px) {
+	.sushma-api-table {
+		font-size: 12px;
+	}
+	.sushma-api-table th,
+	.sushma-api-table td {
+		padding: 8px 6px !important;
+	}
+	.sushma-api-table-email {
+		font-size: 11px;
+	}
+}
+
+

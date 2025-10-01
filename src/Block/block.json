@@ -1,0 +1,17 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "sushma/api-data",
+  "version": "1.0.0",
+  "title": "Sushma API Data",
+  "category": "widgets",
+  "icon": "database",
+  "description": "Display data from API",
+  "supports": {
+    "html": false,
+    "align": true
+  },
+  "textdomain": "sushma-api",
+  "editorScript": "file:./index.js",
+  "style": "file:./style.css"
+}

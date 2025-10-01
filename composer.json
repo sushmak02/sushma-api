@@ -1,0 +1,17 @@
+{
+  "name": "sushma/api",
+  "description": "WordPress plugin to fetch and display remote API data",
+  "type": "wordpress-plugin",
+  "autoload": {
+    "psr-4": {
+      "SushmaAPI\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {},
+  "config": {
+    "optimize-autoloader": true
+  }
+}

@@ -1,0 +1,187 @@
+/**
+ * Block Styles
+ * For both frontend and editor
+ */
+.wp-block-sushma-api-data,
+.sushma-api-block {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Table wrapper */
+.sushma-api-table-wrapper {
+	width: 100%;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+	margin: 0;
+	padding: 0;
+}
+
+/* Table */
+.sushma-api-table {
+	width: 100%;
+	max-width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0;
+	background: #ffffff;
+	border: 1px solid #ddd;
+	margin: 0 !important;
+	table-layout: auto;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+/* Table header */
+.sushma-api-table thead {
+	background: #f9f9f9;
+	border-bottom: 2px solid #ddd;
+}
+
+.sushma-api-table thead th {
+	padding: 12px 16px !important;
+	text-align: left;
+	font-size: 13px;
+	color: #333;
+	border-bottom: 2px solid #ddd !important;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+	background: #f9f9f9;
+}
+/* Body rows */
+.sushma-api-table tbody tr {
+	border-bottom: 1px solid #e5e5e5;
+	transition: background-color 0.15s;
+}
+
+
+.sushma-api-table tbody tr:hover {
+	background-color: #f5f5f5;
+}
+.sushma-api-table tbody tr:last-child {
+	border-bottom: none;
+}
+
+.sushma-api-table tbody td {
+	padding: 12px 16px !important;
+	color: #555;
+	vertical-align: middle;
+	border-bottom: 1px solid #e5e5e5 !important;
+	word-wrap: break-word;
+	overflow-wrap: break-word;
+}
+
+/* Columns */
+.sushma-api-table-id {
+	width: 8%;
+	min-width: 45px;
+}
+.sushma-api-table-fname,
+.sushma-api-table-lname {
+	width: 15%;
+	min-width: 60px;
+}
+.sushma-api-table-email {
+	width: 35%;
+	min-width: 100px;
+}
+
+
+
+.sushma-api-table-date {
+	width: 15%;
+	min-width: 50px;
+	white-space: nowrap;
+}
+
+/* Striped rows */
+.sushma-api-table.striped tbody tr:nth-child(odd) {
+	background-color: #fafafa;
+}
+.sushma-api-table.striped tbody tr:nth-child(even) {
+	background-color: #ffffff;
+}
+.sushma-api-table.striped tbody tr:hover {
+	background-color: #f0f0f0 !important;
+}
+
+/* Editor specific */
+.wp-block-sushma-api-data {
+	margin: 20px 0;
+}
+
+/* Loading */
+.sushma-api-loading-container {
+	text-align: center;
+	padding: 40px;
+	color: #666;
+}
+
+.sushma-api-loading-container p {
+	margin-top: 10px;
+	font-size: 14px;
+}
+
+/* Responsive */
+@media screen and (max-width: 782px) {
+	.sushma-api-table {
+		font-size: 13px;
+	}
+	.sushma-api-table thead th,
+	.sushma-api-table tbody td {
+		padding: 10px 12px !important;
+	}
+
+	.sushma-api-table thead th {
+		font-size: 12px;
+	}
+	.sushma-api-table-email {
+		font-size: 12px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	/* Horizontal scroll on mobile */
+	.sushma-api-table-wrapper {
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+
+	.sushma-api-table {
+		font-size: 12px;
+		min-width: 600px;
+	}
+	.sushma-api-table thead th,
+	.sushma-api-table tbody td {
+		padding: 8px 6px !important;
+		font-size: 11px;
+	}
+	.sushma-api-table thead th {
+		font-size: 10px;
+	}
+	.sushma-api-table-id {
+		min-width: 40px;
+		width: 40px;
+	}
+	.sushma-api-table-fname,
+	.sushma-api-table-lname {
+		min-width: 70px;
+		width: 70px;
+	}
+	.sushma-api-table-email {
+		min-width: 140px;
+		width: 140px;
+		font-size: 10px;
+		word-break: break-word;
+	}
+
+	.sushma-api-table-date {
+		min-width: 80px;
+		width: 80px;
+		font-size: 10px;
+	}
+}
+
+
