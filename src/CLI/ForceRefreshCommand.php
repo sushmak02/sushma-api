@@ -34,9 +34,7 @@ class ForceRefreshCommand {
 	/**
 	 * Force refresh cached data.
 	 *
-	 * ## EXAMPLES
-	 *
-	 *     wp sushma-api force-refresh
+	 * wp sushma-api force-refresh
 	 *
 	 * @param array $args Positional arguments.
 	 * @param array $assoc_args Associative arguments.
