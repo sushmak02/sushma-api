@@ -31,9 +31,9 @@ class AdminPage {
 	 * Register admin hooks
 	 */
 	private function hooks() {
-		add_action( 'admin_menu', [ $this, 'register_admin_menu' ] );
-		add_action( 'admin_enqueue_scripts', [ $this, 'enqueue_assets' ] );
-		add_action( 'wp_ajax_sushma_api_refresh_data', [ $this, 'refresh_data' ] );
+		add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_assets' ) );
+		add_action( 'wp_ajax_sushma_api_refresh_data', array( $this, 'refresh_data' ) );
 	}
 
 	/**
@@ -45,14 +45,18 @@ class AdminPage {
 			__( 'Sushma API', 'sushma-api' ),
 			'manage_options',
 			self::SLUG,
-			[ $this, 'display_setting_page' ],
+			array( $this, 'display_setting_page' ),
 			'dashicons-cloud',
 			100
 		);
 	}
 
 
-	// Register styles.
+	/**
+	 * Register styles.
+	 *
+	 * @param string $page_name Page name.
+	 */
 	public function enqueue_assets( $page_name ) {
 		if ( 'toplevel_page_' . self::SLUG !== $page_name ) {
 			return;
@@ -61,27 +65,27 @@ class AdminPage {
 		wp_enqueue_style(
 			'sushma-api-admin',
 			SUSHMA_API_PLUGIN_URL . 'assets/css/admin.css',
-			[],
+			array(),
 			SUSHMA_API_VERSION
 		);
 		wp_enqueue_script(
 			'sushma-api-admin',
 			SUSHMA_API_PLUGIN_URL . 'assets/js/admin.js',
-			[ 'jquery' ],
+			array( 'jquery' ),
 			SUSHMA_API_VERSION,
 			true
 		);
 		wp_localize_script(
 			'sushma-api-admin',
 			'sushmaApiAdmin',
-			[
+			array(
 				'ajax_url' => admin_url( 'admin-ajax.php' ),
 				'nonce'    => wp_create_nonce( 'sushma_api_refresh' ),
-				'strings'  => [
+				'strings'  => array(
 					'refreshing' => __( 'Loading...', 'sushma-api' ),
 					'refresh'    => __( 'Refresh', 'sushma-api' ),
-				],
-			]
+				),
+			)
 		);
 	}
 
@@ -98,7 +102,7 @@ class AdminPage {
 		$data         = $data_manager->get_data();
 		$title        = '';
 
-		if( ! is_wp_error( $data ) && isset( $data['title'] ) ) {
+		if ( ! is_wp_error( $data ) && isset( $data['title'] ) ) {
 			$title = $data['title'];
 		} ?>
 		<div id="sushma-api-page" class="wrap sushma-api-wrap">
@@ -165,8 +169,8 @@ class AdminPage {
 		}
 
 		$table_data = $data['data'];
-		$headers    = isset( $table_data['headers'] ) ? $table_data['headers'] : [];
-		$rows       = isset( $table_data['rows'] ) ? $table_data['rows'] : [];
+		$headers    = isset( $table_data['headers'] ) ? $table_data['headers'] : array();
+		$rows       = isset( $table_data['rows'] ) ? $table_data['rows'] : array();
 
 		// Object to array conversion.
 		if ( ! is_array( $rows ) || ! isset( $rows[0] ) ) {
@@ -174,11 +178,13 @@ class AdminPage {
 			$rows = array_values( (array) $rows );
 
 		}
-		if ( empty( $headers ) || empty($rows) ) { ?>
+		if ( empty( $headers ) || empty( $rows ) ) {
+			?>
 			<div class="notice notice-warning inline">
 				<p><?php esc_html_e( 'No data available.', 'sushma-api' ); ?></p>
 			</div>
-		<?php return; }
+			<?php
+			return; }
 
 		?>
 		<div class="sushma-api-table-wrapper">
@@ -229,25 +235,27 @@ class AdminPage {
 		// Verify nonce.
 		check_ajax_referer( 'sushma_api_refresh', 'nonce' );
 		if ( ! current_user_can( 'manage_options' ) ) {
-			wp_send_json_error( [ 'message' => __( 'Insufficient permissions.', 'sushma-api' ) ] );
+			wp_send_json_error( array( 'message' => __( 'Insufficient permissions.', 'sushma-api' ) ) );
 		}
 
 		$data_manager = new RemoteDataLoader();
 		$data_manager->force_refresh_function();
 		$data = $data_manager->get_data();
 		if ( is_wp_error( $data ) ) {
-			wp_send_json_error( [ 'message' => $data->get_error_message() ] );
+			wp_send_json_error( array( 'message' => $data->get_error_message() ) );
 		}
 
 		ob_start();
 
 		$this->load_table( $data );
-		
+
 		$html = ob_get_clean();
 
-		wp_send_json_success( [
+		wp_send_json_success(
+			array(
 				'html'    => $html,
 				'message' => __( 'Data refreshed successfully.', 'sushma-api' ),
-		] );
+			)
+		);
 	}
 }

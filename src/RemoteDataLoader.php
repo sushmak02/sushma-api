@@ -19,10 +19,10 @@ use WP_Error;
  */
 class RemoteDataLoader {
 
-	// Constants
-	const API_URL 				= 'https://miusage.com/v1/challenge/1/';
-	const TRANSIENT_KEY 		= 'sushma_api_data';
-	const FORCE_REFRESH_OPTION 	= 'sushma_api_force_refresh';
+	// Constants.
+	const API_URL               = 'https://miusage.com/v1/challenge/1/';
+	const TRANSIENT_KEY         = 'sushma_api_data';
+	const FORCE_REFRESH_OPTION  = 'sushma_api_force_refresh';
 
 
 	/**
@@ -58,18 +58,18 @@ class RemoteDataLoader {
 
 		$response = wp_remote_get(
 			self::API_URL,
-			[
+			array(
 				'timeout'  => 15,
-				'headers' => [
+				'headers' => array(
 					'Accept'  => 'application/json',
-				],
-			]
+				),
+			)
 		);
-
 
 		if ( is_wp_error( $response ) ) {
 			return new WP_Error(
 				'fetch_error',
+				/* translators: %s: error message */
 				sprintf( __( 'Failed to fetch data: %s', 'sushma-api' ), $response->get_error_message() )
 			);
 		}
@@ -79,11 +79,11 @@ class RemoteDataLoader {
 		if ( 200 !== $response_code ) {
 			return new WP_Error(
 				'api_error',
+				/* translators: %d: HTTP error code */
 				sprintf( __( 'API error! Error code: %d', 'sushma-api' ), $response_code )
 			);
 		}
 
-		
 		$body = wp_remote_retrieve_body( $response );
 		$data = json_decode( $body, true );
 
@@ -108,9 +108,11 @@ class RemoteDataLoader {
 	public function force_refresh_function() {
 
 		update_option( self::FORCE_REFRESH_OPTION, true, false );
-
 	}
 
+	/**
+	 * Clear cached data.
+	 */
 	public function clear_cache() {
 		delete_transient( self::TRANSIENT_KEY );
 	}
@@ -124,14 +126,13 @@ class RemoteDataLoader {
 	private function sanitize_data( $data ) {
 
 		if ( is_array( $data ) ) {
-			return array_map( [$this, 'sanitize_data'], $data );
+			return array_map( array( $this, 'sanitize_data' ), $data );
 		}
 
 		if ( is_string( $data ) ) {
 			return sanitize_text_field( $data );
 		}
 		return $data;
-
 	}
 
 	/**
@@ -143,7 +144,7 @@ class RemoteDataLoader {
 
 		$transient_timeout = get_option( '_transient_timeout_' . self::TRANSIENT_KEY );
 
-		if( $transient_timeout ) {
+		if ( $transient_timeout ) {
 			return (int) $transient_timeout;
 		}
 
@@ -159,4 +160,3 @@ class RemoteDataLoader {
 		return false !== get_transient( self::TRANSIENT_KEY );
 	}
 }
-

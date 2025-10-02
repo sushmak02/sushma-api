@@ -9,7 +9,10 @@
     "lint:js": "wp-scripts lint-js"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^27.0.0"
+    "@wordpress/scripts": "^27.0.0",
+    "grunt": "^1.6.1",
+    "grunt-contrib-compress": "^2.0.0",
+    "grunt-exec": "^3.0.0"
   },
   "dependencies": {
     "@wordpress/block-editor": "^13.0.0",

@@ -14,13 +14,21 @@ if ( ! defined( 'ABSPATH' ) ) {
 if ( ! class_exists( 'ApiLoader' ) ) {
 	/**
 	 * Class ApiLoader
+	 *
+	 * Main plugin loader class.
 	 */
 	class ApiLoader {
 
-		/** @var instance */
+		/**
+		 * Instance variable.
+		 *
+		 * @var instance
+		 */
 		private static $instance = null;
 
-		// Get instance
+		/**
+		 * Get instance.
+		 */
 		public static function instance() {
 			if ( null === self::$instance ) {
 				self::$instance = new self();
@@ -40,20 +48,20 @@ if ( ! class_exists( 'ApiLoader' ) ) {
 		 * Register hooks
 		 */
 		private function hooks() {
-			// Admin page
+			// Admin page.
 			AdminPage::init();
 
-			// REST API
+			// REST API.
 			RestController::init();
 
-			// Gutenberg block
+			// Gutenberg block.
 			Block\RegisterBlock::init();
 
-			// WP-CLI commands
+			// WP-CLI commands.
 			CLI\ForceRefreshCommand::init();
 
-			// Text domain
-			add_action( 'init', [ $this, 'load_textdomain' ] );
+			// Text domain.
+			add_action( 'init', array( $this, 'load_textdomain' ) );
 		}
 
 		/**
