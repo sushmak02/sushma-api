@@ -29,8 +29,8 @@ class RegisterBlock {
 	 * Register hooks
 	 */
 	private function hooks() {
-		add_action( 'init', [ $this, 'register_block' ] );
-		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
+		add_action( 'init', array( $this, 'register_block' ) );
+		add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_editor_assets' ) );
 	}
 
 	/**
@@ -41,7 +41,7 @@ class RegisterBlock {
 		wp_enqueue_style(
 			'sushma-api-block-editor',
 			SUSHMA_API_PLUGIN_URL . 'src/Block/style.css',
-			[],
+			array(),
 			SUSHMA_API_VERSION
 		);
 	}
@@ -52,9 +52,9 @@ class RegisterBlock {
 	public function register_block() {
 		register_block_type(
 			SUSHMA_API_PLUGIN_DIR . 'build/Block',
-			[
-				'render_callback' => [ $this, 'render_block' ],
-			]
+			array(
+				'render_callback' => array( $this, 'render_block' ),
+			)
 		);
 	}
 
@@ -95,18 +95,41 @@ class RegisterBlock {
 		}
 
 		// Map columns.
-		$columns = [
-			'id'    => [ 'show' => $show_id, 'label' => $headers[0] ?? 'ID', 'key' => 'id' ],
-			'fname' => [ 'show' => $show_fname, 'label' => $headers[1] ?? 'First Name', 'key' => 'fname' ],
-			'lname' => [ 'show' => $show_lname, 'label' => $headers[2] ?? 'Last Name', 'key' => 'lname' ],
-			'email' => [ 'show' => $show_email, 'label' => $headers[3] ?? 'Email', 'key' => 'email' ],
-			'date'  => [ 'show' => $show_date, 'label' => $headers[4] ?? 'Date', 'key' => 'date' ],
-		];
+		$columns = array(
+			'id'    => array(
+				'show' => $show_id,
+				'label' => $headers[0] ?? 'ID',
+				'key' => 'id',
+			),
+			'fname' => array(
+				'show' => $show_fname,
+				'label' => $headers[1] ?? 'First Name',
+				'key' => 'fname',
+			),
+			'lname' => array(
+				'show' => $show_lname,
+				'label' => $headers[2] ?? 'Last Name',
+				'key' => 'lname',
+			),
+			'email' => array(
+				'show' => $show_email,
+				'label' => $headers[3] ?? 'Email',
+				'key' => 'email',
+			),
+			'date'  => array(
+				'show' => $show_date,
+				'label' => $headers[4] ?? 'Date',
+				'key' => 'date',
+			),
+		);
 
 		// Filter out visible columns.
-		$visible_columns = array_filter( $columns, function($col) {
-			return $col['show'];
-		} );
+		$visible_columns = array_filter(
+			$columns,
+			function ( $col ) {
+				return $col['show'];
+			}
+		);
 
 		if ( empty( $visible_columns ) ) {
 			return '<div class="sushma-api-block notice notice-info">' .
@@ -118,7 +141,7 @@ class RegisterBlock {
 		wp_enqueue_style(
 			'sushma-api-block-frontend',
 			SUSHMA_API_PLUGIN_URL . 'src/Block/style.css',
-			[],
+			array(),
 			SUSHMA_API_VERSION
 		);
 

@@ -28,11 +28,17 @@ class ForceRefreshCommand {
 			return;
 		}
 
-		WP_CLI::add_command( 'sushma-api force-refresh', [ __CLASS__, 'force_refresh' ] );
+		WP_CLI::add_command( 'sushma-api force-refresh', array( __CLASS__, 'force_refresh' ) );
 	}
 
-	// Force refresh cached data
-	// wp sushma-api force-refresh
+	/**
+	 * Force refresh cached data.
+	 *
+	 * wp sushma-api force-refresh
+	 *
+	 * @param array $args Positional arguments.
+	 * @param array $assoc_args Associative arguments.
+	 */
 	public static function force_refresh( $args, $assoc_args ) {
 		WP_CLI::log( __( 'Setting force refresh...', 'sushma-api' ) );
 
@@ -41,7 +47,7 @@ class ForceRefreshCommand {
 		$data = $data_manager->get_data();
 
 		if ( is_wp_error( $data ) ) {
-			WP_CLI::error( __( 'Error fetching data: ' . $data->get_error_message(), 'sushma-api' ) );
+			WP_CLI::error( 'Error fetching data: ' . $data->get_error_message() );
 		}
 
 		WP_CLI::success( __( 'Fresh data fetched successfully..!', 'sushma-api' ) );

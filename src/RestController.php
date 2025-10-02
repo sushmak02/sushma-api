@@ -22,26 +22,34 @@ use WP_Error;
  */
 class RestController {
 
+	/**
+	 * Initialize the REST controller.
+	 */
 	public static function init() {
 		$instance = new self();
 		$instance->hooks();
 	}
 
+	/**
+	 * Register hooks.
+	 */
 	private function hooks() {
-		add_action( 'rest_api_init', [ $this, 'register_routes' ] );
+		add_action( 'rest_api_init', array( $this, 'register_routes' ) );
 	}
 
-	// Register REST route.
+	/**
+	 * Register REST route.
+	 */
 	public function register_routes() {
 
 		register_rest_route(
 			'sushma-api/v1',
 			'/data',
-			[
+			array(
 				'methods'             => WP_REST_Server::READABLE,
-				'callback'            => [ $this, 'get_data' ],
+				'callback'            => array( $this, 'get_data' ),
 				'permission_callback' => '__return_true',
-			]
+			)
 		);
 	}
 
@@ -56,24 +64,22 @@ class RestController {
 		$data_manager = new RemoteDataLoader();
 		$data = $data_manager->get_data();
 
-
 		if ( is_wp_error( $data ) ) {
 
 			return new WP_Error(
 				'data_fetch_error',
 				$data->get_error_message(),
-				[ 'status' => 500 ]
+				array( 'status' => 500 )
 			);
-			
+
 		}
 
 		return new WP_REST_Response(
-			[
+			array(
 				'success' => true,
 				'data'    => $data,
-			],
+			),
 			200
 		);
 	}
 }
-
